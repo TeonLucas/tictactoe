@@ -1,0 +1,31 @@
+body {
+  font: 14px "Century Gothic", Futura, sans-serif;
+  margin: 20px;
+}
+
+ol, ul {
+  padding-left: 30px;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+
+.header {
+  padding: 15px;
+  text-align: center;
+  background: #33ccff;
+  color: white;
+  font-size: 52px;
+  margin-bottom: 10px;
+}
+
+.avatar {
+  background: url(../img/user.jpg);
+  background-size: 100% auto;
+  background-repeat: no-repeat;
+  width: 72px;
+  height: 72px;
+  float: right;
+}
