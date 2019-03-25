@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>{{title}}</title>
+    <link rel="shortcut icon" href="{{favicon}}">
+</head>
+<body>
+    <div id="root">
+        <p class="description">Tic Tac Toe via Squirrelly</p>
+    </div>
+    <script type="text/javascript" src={{main}}></script></body>
+</body>
+</html>

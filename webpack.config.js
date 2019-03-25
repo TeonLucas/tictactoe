@@ -1,19 +1,20 @@
-const path = require("path")
-const webpack = require('webpack')
-const HtmlWebPackPlugin = require("html-webpack-plugin")
+const path = require("path");
+const webpack = require('webpack');
+const CopyPlugin = require('copy-webpack-plugin');
 
 module.exports = {
   entry: {
     main: './src/index.js'
   },
   output: {
-    path: path.join(__dirname, 'public'),
+    path: path.join(__dirname, 'dist'),
     publicPath: '/',
     filename: '[name].js'
   },
   target: 'web',
-  externals: {
-    newrelic: 'newrelic'
+  node: {
+    __dirname: false,
+    __filename: false,
   },
   module: {
     rules: [
@@ -26,8 +27,6 @@ module.exports = {
         }
       },
       {
-        // Loads the javacript into html template provided.
-        // Entry point is set below in HtmlWebPackPlugin in Plugins 
         test: /\.html$/,
         use: ['html-loader']
       },
@@ -61,10 +60,14 @@ module.exports = {
     ]
   },
   plugins: [
-    new HtmlWebPackPlugin({
-      template: "./src/html/index.html",
-      filename: "./index.html",
-      excludeChunks: [ 'server' ]
-    })
+    new CopyPlugin([
+      {
+        from: 'src/views',
+        to: 'views/'
+      },
+      { from: 'src/html',
+        to: path.join(__dirname, 'public/')
+      }
+    ])
   ]
-}
+};

@@ -2,7 +2,7 @@
 
 ENDPOINT="http://localhost:3000"
 
-FILES=`ls -1 public/images/* | sed 's+public++'`
+FILES=`ls -1 dist/images/* | sed 's+dist++'`
 FILES=`echo $FILES /`
 
 echo "Fetching from $ENDPOINT"
