@@ -30,5 +30,5 @@ do
     done
   done
   
-  echo "Fetched $TIMES times: Pass $PASS, Fail $FAIL"
+  echo "Completed $TOTAL requests: Pass $PASS, Fail $FAIL"
 done
