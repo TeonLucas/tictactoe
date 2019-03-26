@@ -9,7 +9,7 @@ exports.config = {
   /**
    * Array of application names.
    */
-  app_name: ['express-squirrelly'],
+  app_name: ['express-react-app'],
   /**
    * Your New Relic license key.
    */
