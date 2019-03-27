@@ -13,7 +13,8 @@ First build the production server.  The same index.html will be used for both fl
 npm install
 npm run build
 ```
-The latter step creates a new directory `public` with the production`main.js` and `index.html` files.
+The latter step creates a new directory `public` with `index.html` files.
+It also creates a directory `dist` with the `main.js` output file, static assets and doT views for the Express server.
 
 ## Webpack development flow
 To start the development server, type:
