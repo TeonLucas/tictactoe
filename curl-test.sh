@@ -2,7 +2,7 @@
 
 ENDPOINT="http://localhost:3000"
 
-FILES=`ls -1 public/images/* | sed 's+public++'`
+FILES=`ls -1 dist/images/* | sed 's+dist++'`
 FILES=`echo $FILES /`
 
 echo "Fetching from $ENDPOINT"
@@ -11,16 +11,24 @@ do
   echo "• GET $k"
 done
 
-TIMES=0
-for i in {1..10}
+TOTAL=0
+PASS=0
+FAIL=0
+for i in {1..12}
 do
-  for i in {1..100}
+  for i in {1..50}
   do
     for k in $FILES
     do
-      curl -s -o /tmp/file $ENDPOINT$K
+      status=`curl -Is $ENDPOINT$K | head -1`
+      ((TOTAL+=1))
+      if [[ $status =~ '200 OK' ]]; then
+        ((PASS+=1))
+      else
+        ((FAIL+=1))
+      fi
     done
   done
-  ((TIMES+=100))
-  echo Fetched $TIMES times
+  
+  echo "Completed $TOTAL requests: Pass $PASS, Fail $FAIL"
 done

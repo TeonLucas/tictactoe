@@ -4,22 +4,17 @@ import Game from './game';
 import Settings from './settings';
 import '../css/app.css';
 
-// Mock newrelic for webpack
-// eslint-disable-next-line no-use-before-define
-if (typeof(newrelic) === 'undefined') {
-  var newrelic = {
-    setCustomAttribute(i, j) {
-      console.log('Mock setCustomAttribute:', i, j);
-    }
-  }
-}
+const Http = new XMLHttpRequest();
 
 class App extends Component {
 
   componentDidMount() {
     let id = Math.random().toString(36).substr(2);
-    newrelic.setCustomAttribute('gameId', id);
+    Http.open("GET", '/metric/' + id);
+    Http.send();
+    console.log('addCustomAttribute: gameId', id);
   }
+
 
   about() {
     return (
@@ -37,7 +32,9 @@ class App extends Component {
   won({match}) {
     // update gameId when we have a winner
     let id = Math.random().toString(36).substr(2);
-    newrelic.setCustomAttribute('gameId', id);
+    Http.open("GET", '/metric/' + id);
+    Http.send();
+    console.log('addCustomAttribute: gameId', id);
 
     return (
       <div>

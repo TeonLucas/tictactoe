@@ -1,20 +1,34 @@
-require('newrelic');
-import path from 'path'
-import express from 'express'
+const newrelic = require('newrelic'),
+      express = require('express'),
+      dot = require('express-dot-engine'),
+      path = require('path');
 
-const app = express(),
-            DIST_DIR = __dirname,
-            HTML_FILE = path.join(DIST_DIR, 'index.html')
+const app = express();
 
-app.use(express.static(DIST_DIR))
+// Static assets
+app.use(express.static('dist'));
 
-app.get('*', (req, res) => {
-    res.sendFile(HTML_FILE)
-})
+// doT views
+app.engine('dot', dot.__express);
+app.set('views', path.join(__dirname, './views'));
+app.set('view engine', 'dot');
 
-const PORT = process.env.PORT || 3000
-app.listen(PORT, () => {
-    console.log(`App listening to ${PORT}....`)
-    console.log('Press Ctrl+C to quit.')
-})
+app.get('/', function (req, res) {
 
+    res.render('index', {
+        title: 'Express doT React App',
+        favicon: '/images/favicon.ico',
+        main: '/main.js',
+        newrelic: newrelic.getBrowserTimingHeader()
+    })
+});
+
+app.get('/metric/:id', function (req, res) {
+    newrelic.addCustomAttribute('gameId', req.params.id);
+    res.send('{"gameId": "'+ req.params.id + '"}\n');
+});
+
+let PORT = process.env.PORT || 3000;
+let server = app.listen(PORT, function () { // This starts the server
+    console.log("listening to request on port", PORT);
+});
