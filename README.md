@@ -29,3 +29,7 @@ npm run build
 npm start
 ```
 
+This uses the [doT template engine](https://www.npmjs.com/package/express-dot-engine) to render the New Relic Browser timing header.
+It also sends custom attributes back to determine a game "session", since a browser "session" does not update
+when the same user starts another game.
+
