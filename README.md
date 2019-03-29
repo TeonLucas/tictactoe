@@ -35,6 +35,7 @@ let id = Math.random().toString(36).substr(2);
 newrelic.addCustomAttribute('indexRenderId', id);
 ```
 
+### Browser Metrics
 * Default PageView and Browser interaction events from the SPA
 * A custom attribute to identify each game "session"
 
