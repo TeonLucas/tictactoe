@@ -41,9 +41,9 @@ newrelic.addCustomAttribute('indexRenderId', id);
 * A custom attribute to identify each game "session"
 
 The game session was needed to create a funnel revealing the user journey.  We were interested in how involved the user was, as follows:
-# Land on home page
-# Start game
-# Win game
+1. Land on home page
+2. Start game
+3. Win game
 
 A browser session ID is a common metric used to see how many unique users access a site, and is included with default Browser monitoring.  However, since a session ID does not update when the same user accesses a site more than once, we need a new metric to accuartely count the start of each game. This metric is generated in [app.js](https://github.com/DavidSantia/tictactoe/blob/master/src/js/app.js) like so:
 ```
