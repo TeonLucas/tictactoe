@@ -28,7 +28,7 @@ The monitoring configuration includes both APM for Node.js, and Browser for the 
 
 ### APM Metrics
 * Default Transaction events from the Node.js server
-* A custom attribute to identify each render of the index template
+* A custom attribute _indexRenderId_ to denote each render of the index template
 
 The custom attribute was added to provide a more complete illustration for instrumenting a Node.js server. Let's say we want to count the number of times each user renders the html page for our single page app.  This metric we need to identify these events is generated in [server.js](https://github.com/DavidSantia/tictactoe/blob/master/src/server/server.js) like so:
 ```
@@ -38,9 +38,9 @@ newrelic.addCustomAttribute('indexRenderId', id);
 
 ### Browser Metrics
 * Default PageView and Browser interaction events from the SPA
-* A custom attribute to identify each game "session"
+* A custom attribute _gameId_ to denote each game "session"
 
-The game session was needed to create a funnel revealing the user journey.  We were interested in how involved the user was, as follows:
+The game session was added so we could make a funnel for the user journey.  Let's say we want to know how engaging the site was in terms of the following stages:
 1. Land on home page
 2. Start game
 3. Win game
