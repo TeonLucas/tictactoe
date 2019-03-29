@@ -14,7 +14,7 @@ npm install
 ```
 
 ## Configuring monitoring
-The monitoring configuration includes both APM for Node.js, and Browser for the SPA.  To configure monitoring, copy the template:
+To configure monitoring, copy the template:
 ```sh
 cp newrelic.template.js newrelic.js
 ```
@@ -24,7 +24,8 @@ Then edit newrelic.js and add your license key:
 license_key: 'license key here',
 ```
 
-This project reports both APM and Browser metrics:
+The monitoring configuration includes both APM for Node.js, and Browser for the SPA. 
+
 ### APM Metrics
 * Default Transaction events from the Node.js server
 * A custom attribute to identify each render of the index template
