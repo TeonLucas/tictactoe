@@ -9,11 +9,10 @@ class App extends Component {
   componentDidMount() {
     let id = Math.random().toString(36).substr(2);
 
-    // eslint-disable-next-line no-use-before-define
-    if (typeof(newrelic) === 'object') {
+    if (typeof(newrelic) === 'object') { // eslint-disable-next no-use-before-define
       console.log('setCustomAttribute: gameId', id);
-      // eslint-disable-next-line no-undef
-      newrelic.setCustomAttribute('gameId', id); }
+      newrelic.setCustomAttribute('gameId', id); // eslint-disable-line no-undef
+    }
     else {
       console.log('Mock setCustomAttribute: gameId', id);
     }
@@ -36,11 +35,10 @@ class App extends Component {
     // update gameId when we have a winner
     let id = Math.random().toString(36).substr(2);
 
-    // eslint-disable-next-line no-use-before-define
-    if (typeof(newrelic) === 'object') {
+    if (typeof(newrelic) === 'object') { // eslint-disable-line no-use-before-define
       console.log('setCustomAttribute: gameId', id);
-      // eslint-disable-next-line no-undef
-      newrelic.setCustomAttribute('gameId', id); }
+      newrelic.setCustomAttribute('gameId', id); // eslint-disable-line no-undef
+    }
     else {
       console.log('Mock setCustomAttribute: gameId', id);
     }

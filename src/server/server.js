@@ -17,8 +17,8 @@ app.get('/', function (req, res) {
 
     // Pass a Page Load Id each time we render index
     let id = Math.random().toString(36).substr(2);
-    console.log('addCustomAttribute: pageLoadId', id);
-    newrelic.addCustomAttribute('pageLoadId', id);
+    console.log('addCustomAttribute: indexRenderId', id);
+    newrelic.addCustomAttribute('indexRenderId', id);
 
     res.render('index', {
         title: 'Express doT React App',
