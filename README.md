@@ -40,12 +40,12 @@ newrelic.addCustomAttribute('indexRenderId', id);
 * Default PageView and Browser interaction events from the SPA
 * A custom attribute _gameId_ to denote each game "session"
 
-The game session was added so we could make a funnel for the user journey.  Let's say we want to know how engaging the site was in terms of the following stages:
+The game ID was added so we could make a funnel for the user journey.  Let's say we want to know how engaging the site was in terms of the following stages:
 1. Land on home page
 2. Start game
 3. Win game
 
-A browser session ID is a common metric used to see how many unique users access a site, and is included with default Browser monitoring.  However, since a session ID does not update when the same user accesses a site more than once, we need a new metric to accuartely count the start of each game. This metric is generated in [app.js](https://github.com/DavidSantia/tictactoe/blob/master/src/js/app.js) like so:
+A browser session ID is a common metric used to see how many unique users access a site, and is included with default Browser monitoring.  However, since this ID does not update when the same user accesses a site more than once, we need a new metric to accuartely count the start of each game. This metric is generated in [app.js](https://github.com/DavidSantia/tictactoe/blob/master/src/js/app.js) like so:
 ```
 let id = Math.random().toString(36).substr(2);
 newrelic.setCustomAttribute('gameId', id);
