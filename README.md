@@ -30,7 +30,7 @@ The monitoring configuration includes both APM for Node.js, and Browser for the 
 * Default Transaction events from the Node.js server
 * A custom attribute to identify each render of the index template
 
-The custom attribute was added to provide a more complete illustration for instrumenting a Node.js server. Let's say for example we want to know the average number of times each user renders the html page for our single page app.  This metric is generated in [server.js](https://github.com/DavidSantia/tictactoe/blob/master/src/server/server.js) like so:
+The custom attribute was added to provide a more complete illustration for instrumenting a Node.js server. Let's say we want to count the number of times each user renders the html page for our single page app.  This metric we need to identify these events is generated in [server.js](https://github.com/DavidSantia/tictactoe/blob/master/src/server/server.js) like so:
 ```
 let id = Math.random().toString(36).substr(2);
 newrelic.addCustomAttribute('indexRenderId', id);
