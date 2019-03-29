@@ -22,6 +22,15 @@ exports.config = {
      */
     level: 'info'
   },
+  browser_monitoring: {
+    attributes: {
+      /*
+       * @env NEW_RELIC_BROWSER_MONITORING_ATTRIBUTES_ENABLED
+       */
+      enabled: true,
+      include: ['*']
+    }
+  },
   /**
    * When true, all request headers except for those listed in attributes.exclude
    * will be captured for all traces, unless otherwise specified in a destination's

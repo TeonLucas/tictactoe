@@ -4,17 +4,19 @@ import Game from './game';
 import Settings from './settings';
 import '../css/app.css';
 
-const Http = new XMLHttpRequest();
-
 class App extends Component {
 
   componentDidMount() {
     let id = Math.random().toString(36).substr(2);
-    Http.open("GET", '/metric/' + id);
-    Http.send();
-    console.log('addCustomAttribute: gameId', id);
-  }
 
+    if (typeof(newrelic) === 'object') { // eslint-disable-next no-use-before-define
+      console.log('setCustomAttribute: gameId', id);
+      newrelic.setCustomAttribute('gameId', id); // eslint-disable-line no-undef
+    }
+    else {
+      console.log('Mock setCustomAttribute: gameId', id);
+    }
+  }
 
   about() {
     return (
@@ -32,9 +34,14 @@ class App extends Component {
   won({match}) {
     // update gameId when we have a winner
     let id = Math.random().toString(36).substr(2);
-    Http.open("GET", '/metric/' + id);
-    Http.send();
-    console.log('addCustomAttribute: gameId', id);
+
+    if (typeof(newrelic) === 'object') { // eslint-disable-line no-use-before-define
+      console.log('setCustomAttribute: gameId', id);
+      newrelic.setCustomAttribute('gameId', id); // eslint-disable-line no-undef
+    }
+    else {
+      console.log('Mock setCustomAttribute: gameId', id);
+    }
 
     return (
       <div>
