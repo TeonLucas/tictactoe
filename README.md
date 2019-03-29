@@ -26,7 +26,7 @@ license_key: 'license key here',
 
 This project reports both APM and Browser metrics:
 ### APM Metrics
-* Default Transaction events are reported from the Node.js server
+* Default Transaction events from the Node.js server
 * An custom attribute is added to identify each render of the index template
 
 The custom attribute was added to provide a more complete illustration for instrumenting a Node.js server. Let's say for example we want to know the average number of times each user renders the html page for our single page app.  This metric is generated in [server.js](https://github.com/DavidSantia/tictactoe/blob/master/src/server/server.js) like so:
@@ -35,8 +35,8 @@ let id = Math.random().toString(36).substr(2);
 newrelic.addCustomAttribute('indexRenderId', id);
 ```
 
-* PageView and Browser interaction events are reported from the SPA
-** These include a custom attribute to identify a game "session"
+* Default PageView and Browser interaction events from the SPA
+* A custom attribute to identify each game "session"
 
 The game session was needed to create a funnel revealing the user journey.  We were interested in how involved the user was, as follows:
 # Land on home page
