@@ -19,7 +19,7 @@ To configure monitoring, copy the template:
 cp newrelic.template.js newrelic.js
 ```
 
-Then edit newrelic.js and add your license key:
+Then edit `newrelic.js` and add your license key:
 ```
 license_key: 'license key here',
 ```
