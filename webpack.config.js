@@ -62,12 +62,11 @@ module.exports = {
     ]
   },
   plugins: [
-    new CopyPlugin([
-      {
-        from: 'src/views',
-        to: 'views/'
-      }
-    ]),
+    new CopyPlugin({
+      patterns: [
+        { from: 'src/views', to: 'views/' },
+      ]
+    }),
     new MiniCssExtractPlugin()
   ]
 };
