@@ -33,10 +33,6 @@ module.exports = {
         use: ['source-map-loader'],
       },
       {
-        test: /\.html$/,
-        use: ['html-loader']
-      },
-      {
         test: /\.css$/,
         use: [MiniCssExtractPlugin.loader, 'css-loader']
       },
@@ -70,9 +66,6 @@ module.exports = {
       {
         from: 'src/views',
         to: 'views/'
-      },
-      { from: 'src/html',
-        to: path.join(__dirname, 'public/')
       }
     ]),
     new MiniCssExtractPlugin()
