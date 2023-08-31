@@ -1,8 +1,36 @@
 import React, { Component } from 'react';
-import { BrowserRouter, Route, Link } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
 import Game from './game';
 import Settings from './settings';
 import '../css/app.css';
+
+function About() {
+  return (
+    <div>
+      <p>React tutorial example</p>
+      <p>Modified to add routes and New Relic monitoring</p>
+    </div>
+  );
+}
+
+function Won({match}) {
+  // update gameId when we have a winner
+  let id = Math.random().toString(36).substr(2);
+
+  if (typeof(newrelic) === 'object') { // eslint-disable-line no-use-before-define
+    console.log('setCustomAttribute: gameId', id);
+    newrelic.setCustomAttribute('gameId', id); // eslint-disable-line no-undef
+  }
+  else {
+    console.log('Mock setCustomAttribute: gameId', id);
+  }
+
+  return (
+    <div>
+      <h1>Winner: {match.params.winner}</h1>
+    </div>
+  );
+}
 
 class App extends Component {
 
@@ -18,41 +46,7 @@ class App extends Component {
     }
   }
 
-  about() {
-    return (
-      <div>
-        <p>React tutorial example</p>
-        <p>Modified to add routes and New Relic monitoring</p>
-      </div>
-    );
-  }
 
-  game() {
-    return <Game/>;
-  }
-
-  won({match}) {
-    // update gameId when we have a winner
-    let id = Math.random().toString(36).substr(2);
-
-    if (typeof(newrelic) === 'object') { // eslint-disable-line no-use-before-define
-      console.log('setCustomAttribute: gameId', id);
-      newrelic.setCustomAttribute('gameId', id); // eslint-disable-line no-undef
-    }
-    else {
-      console.log('Mock setCustomAttribute: gameId', id);
-    }
-
-    return (
-      <div>
-        <h1>Winner: {match.params.winner}</h1>
-      </div>
-    );
-  }
-
-  settings() {
-    return <Settings/>;
-  }
 
   render() {
     return (
@@ -76,10 +70,12 @@ class App extends Component {
             </ul>
           </nav>
         </div>
-        <Route path="/" exact component={this.about} />
-        <Route path="/game" component={this.game} />
-        <Route path="/won/:winner" component={this.won} />
-        <Route path="/settings" component={this.settings} />
+        <Routes>
+          <Route path="/" element={<About />} />
+          <Route path="game" element={<Game />} />
+          <Route path="won" element={<Won />} />
+          <Route path="settings" element={<Settings />} />
+        </Routes>
       </BrowserRouter>
     );
   }

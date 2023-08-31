@@ -1,6 +1,7 @@
 const path = require("path");
 const webpack = require('webpack');
 const CopyPlugin = require('copy-webpack-plugin');
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 module.exports = {
   entry: {
@@ -22,9 +23,14 @@ module.exports = {
         test: /\.js$/,
         exclude: /node_modules/,
         loader: 'babel-loader',
-        query: {
+        options: {
           presets: ['@babel/react', '@babel/preset-env']
         }
+      },
+      {
+        test: /\.m?js$/,
+        enforce: 'pre',
+        use: ['source-map-loader'],
       },
       {
         test: /\.html$/,
@@ -32,7 +38,7 @@ module.exports = {
       },
       {
         test: /\.css$/,
-        use: ['style-loader', 'css-loader']
+        use: [MiniCssExtractPlugin.loader, 'css-loader']
       },
       {
         test: /\.ico$/,
@@ -68,6 +74,7 @@ module.exports = {
       { from: 'src/html',
         to: path.join(__dirname, 'public/')
       }
-    ])
+    ]),
+    new MiniCssExtractPlugin()
   ]
 };

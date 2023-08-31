@@ -9,7 +9,7 @@ exports.config = {
   /**
    * Array of application names.
    */
-  app_name: ['express-react-app'],
+  app_name: ['tictactoe'],
   /**
    * Your New Relic license key.
    */
