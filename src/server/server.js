@@ -24,6 +24,7 @@ app.get('/', function (req, res) {
         title: 'Express doT React App',
         favicon: '/images/favicon.ico',
         main: '/main.js',
+        css: 'main.css',
         newrelic: newrelic.getBrowserTimingHeader()
     })
 });

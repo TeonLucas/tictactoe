@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Redirect } from 'react-router-dom';
+import { redirect } from 'react-router-dom';
 import Board from './board';
 import '../css/game.css';
 
@@ -82,7 +82,7 @@ class Game extends Component {
     let status;
     if (winner) {
       status = "Winner: " + winner;
-      return <Redirect to={"/won/" + winner}/>;
+      return redirect("/won/" + winner);
     } else {
       status = "Next player: " + (this.state.xIsNext ? "X" : "O");
     }
