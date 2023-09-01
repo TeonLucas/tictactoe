@@ -60,11 +60,6 @@ npm run build
 ```
 
 The build step creates a new directory `public` containing the `index.html` file, needed for this flow.
-Then to start developing, type:
-```sh
-npm test
-```
-This runs `react-scripts start`, providing a setup similar to the React tutorial.
 
 ## Express server flow
 This flow uses the [doT template engine](https://www.npmjs.com/package/express-dot-engine) to render the index file containing the New Relic Browser timing header.
