@@ -69,7 +69,7 @@ Once you are done developing, update the build.
 npm run build
 ```
 
-This creates a directory `dist` containing the `main.js` output file, static assets and doT views.  You can then start the Express server as follows:
+This creates a directory `dist` containing the `main.js` and `main.css` output files, static assets and doT views.  You can then start the Express server as follows:
 ```sh
 npm start
 ```
