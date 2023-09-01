@@ -62,7 +62,7 @@ The build step creates a new directory `public` containing the `index.html` file
 
 ## Express server flow
 This flow uses the [doT template engine](https://www.npmjs.com/package/express-dot-engine) templates to render the index file containing the New Relic Browser snippet.
-The [server.js](https://github.com/TeonLucas/tictactoe/blob/master/src/server/server.js) code passes the `newrelic` and other variables to the template as follows:
+The [server.js](https://github.com/TeonLucas/tictactoe/blob/master/src/server/server.js) code passes this via a variable `newrelic`, along with some other settings, to the template as follows:
 ```js
     res.render('index', {
         title: 'Express doT React App',
