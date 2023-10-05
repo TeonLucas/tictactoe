@@ -8,7 +8,7 @@ React Node.js demo based on the [Tutorial: Intro to React](https://reactjs.org/t
 ## Pre-requisites
 This demo assumes you have Node.js and Git installed. To install the demo, type:
 ```sh
-git clone https://github.com/DavidSantia/tictactoe
+git clone https://github.com/TeonLucas/tictactoe
 cd tictactoe
 npm install
 ```
