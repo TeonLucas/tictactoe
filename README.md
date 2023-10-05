@@ -51,6 +51,7 @@ newrelic.setCustomAttribute('gameId', id);
 ```
 
 Notice the function name for APM is `addCustomAttribute()` vs. `setCustomAttribute()` for Browser.
+The Settings tab on the game makes an Ajax request, which generates a Browser distributed trace.
 
 ## Webpack development flow
 First build the project:
@@ -68,7 +69,7 @@ The [server.js](https://github.com/TeonLucas/tictactoe/blob/master/src/server/se
         title: 'Express doT React App',
         favicon: '/images/favicon.ico',
         main: '/main.js',
-        css: 'main.css',
+        css: '/main.css',
         newrelic: newrelic.getBrowserTimingHeader()
     })
 ```
