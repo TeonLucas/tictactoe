@@ -14,6 +14,14 @@ exports.config = {
    * Your New Relic license key.
    */
   license_key: 'license key here',
+  application_logging: {
+    forwarding: {
+      enabled: true
+    },
+    local_decorating: {
+      enabled: false
+    }
+  },
   logging: {
     /**
      * Level at which to log. 'trace' is most useful to New Relic when diagnosing

@@ -24,7 +24,7 @@ app.get('/', function (req, res) {
 
     // Pass a Page Load Id each time we render index
     let id = Math.random().toString(36).substr(2);
-    logger.info('addCustomAttribute: indexRenderId', id);
+    logger.info('addCustomAttribute: indexRenderId ' + id.toString());
     newrelic.addCustomAttribute('indexRenderId', id);
 
     res.render('index', {
@@ -48,5 +48,5 @@ app.get('/user', function (req, res) {
 
 let PORT = process.env.PORT || 3000;
 let server = app.listen(PORT, function () { // This starts the server
-    logger.info("listening to request on port", PORT);
+    logger.info("listening to request on port " + PORT.toString());
 });
