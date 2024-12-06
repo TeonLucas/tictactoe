@@ -1,9 +1,16 @@
 const newrelic = require('newrelic'),
       express = require('express'),
       dot = require('express-dot-engine'),
-      path = require('path');
+      path = require('path'),
+      winston = require('winston');
 
 const app = express();
+
+const logger = winston.createLogger({
+  level: 'info',
+  format: winston.format.json(),
+  transports: [new winston.transports.Console()],
+});
 
 // Static assets
 app.use(express.static('dist'));
@@ -17,7 +24,7 @@ app.get('/', function (req, res) {
 
     // Pass a Page Load Id each time we render index
     let id = Math.random().toString(36).substr(2);
-    console.log('addCustomAttribute: indexRenderId', id);
+    logger.info('addCustomAttribute: indexRenderId', id);
     newrelic.addCustomAttribute('indexRenderId', id);
 
     res.render('index', {
@@ -41,5 +48,5 @@ app.get('/user', function (req, res) {
 
 let PORT = process.env.PORT || 3000;
 let server = app.listen(PORT, function () { // This starts the server
-    console.log("listening to request on port", PORT);
+    logger.info("listening to request on port", PORT);
 });
