@@ -1,6 +1,5 @@
 const newrelic = require('newrelic'),
       express = require('express'),
-      dot = require('express-dot-engine'),
       path = require('path'),
       winston = require('winston');
 
@@ -15,10 +14,9 @@ const logger = winston.createLogger({
 // Static assets
 app.use(express.static('dist'));
 
-// doT views
-app.engine('dot', dot.__express);
+// ejs views
 app.set('views', path.join(__dirname, './views'));
-app.set('view engine', 'dot');
+app.set('view engine', 'ejs');
 
 app.get('/', function (req, res) {
 
