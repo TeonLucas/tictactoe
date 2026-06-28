@@ -8,8 +8,8 @@
     "start": "node ./dist/server.js"
   },
   "dependencies": {
+    "ejs": "^3.1.9",
     "express": "^4.18.2",
-    "express-dot-engine": "^1.0.8",
     "newrelic": "^12.8.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
@@ -22,7 +22,7 @@
     "@babel/preset-env": "^7.22.10",
     "@babel/preset-react": "^7.22.5",
     "babel-loader": "^8.0.5",
-    "copy-webpack-plugin": "^11.0.0",
+    "copy-webpack-plugin": "^14.0.0",
     "css-loader": "^6.8.1",
     "file-loader": "^6.2.0",
     "html-loader": "^4.2.0",
@@ -38,5 +38,10 @@
     "not dead",
     "not ie <= 11",
     "not op_mini all"
-  ]
+  ],
+  "allowScripts": {
+    "@newrelic/fn-inspect@4.4.0": true,
+    "@newrelic/native-metrics@11.1.0": true,
+    "protobufjs@7.6.4": true
+  }
 }
